@@ -2,48 +2,16 @@
 
 import type React from "react"
 
-import { Mail, MapPin, Phone, Send } from "lucide-react"
+import { Mail, MapPin, Phone } from "lucide-react"
 import { Card, CardContent } from "@/app/components/ui/card"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { useState } from "react"
 
 export function Contact() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   })
-
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  })
-
-  const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState({
-      ...formState,
-      [e.target.id]: e.target.value,
-    })
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setFormState({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      })
-    }, 1500)
-  }
 
   const container = {
     hidden: { opacity: 0 },

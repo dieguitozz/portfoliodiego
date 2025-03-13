@@ -6,22 +6,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/app/components/ui/button";
 import Diego from "../../../../public/gojo.png"
 import { Linkedin, DownloadIcon } from "lucide-react";
-import { useEffect, useState } from "react";
 
 export default function Main() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: e.clientX / window.innerWidth,
-        y: e.clientY / window.innerHeight,
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   const container = {
     hidden: { opacity: 0 },
