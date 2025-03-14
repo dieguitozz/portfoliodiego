@@ -129,7 +129,7 @@ export function Header() {
       <AnimatePresence>
   {isOpen && isMobile && (
     <motion.div
-      className="fixed inset-0 top-16 z-50 bg-background/95 backdrop-blur-md flex justify-center items-center"
+      className="inset-0 top-5 z-30 bg-background/95 backdrop-blur-md flex justify-center items-center"
       initial={{ opacity: 0, height: 0 }}
       animate={{ opacity: 1, height: "100vh" }}
       exit={{ opacity: 0, height: 0 }}
@@ -148,7 +148,7 @@ export function Header() {
               className="text-lg font-medium transition-colors hover:text-red-600 flex items-center"
               onClick={() => setIsOpen(false)}
             >
-              <span className="text-red-600 mr-2">0{index + 1}.</span>
+              <span className="text-red-600 mr-2"></span>
               {item.label}
             </Link>
           </motion.div>
@@ -161,7 +161,11 @@ export function Header() {
           transition={{ delay: 0.5 }}
         >
           <p className="text-sm text-muted-foreground">Entre em contato</p>
-          <a href="mailto:diegosilvasd2006@gmail.com">
+          <a
+                href="mailto:diegosilvasd2006@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
             <Button className="bg-red-600 hover:bg-red-700 mt-2">
               <Mail className="mr-2 h-4 w-4" /> diegosilvasd2006@gmail.com
             </Button>

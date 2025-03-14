@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useState } from "react";
 import Image from "next/image";
-import Barber from "../../../../public/landing.png"
 
 export function Projects() {
   const [ref, inView] = useInView({
@@ -26,6 +25,14 @@ export function Projects() {
       tags: ["React", "JavaScript", "SCSS"],
       demoUrl: "#",
       repoUrl: "https://github.com/Kaua12365/ClassicBarber",
+    },    
+    {
+      title: "Escritóro de Advocacia Viirtual",
+      description: "TCC desenvolvido para um escritório fictício de advocacia, com sistema de agendamento, listagem de advogados e um chat integrado.",
+      image: "/dfgr.png",
+      tags: ["React", "JavaScript", "SCSS", "MySQL"],
+      demoUrl: "#",
+      repoUrl: "https://github.com/RafaelFSaldanha/tcc-dfgr-advocacy",
     }
   ];
 
@@ -94,9 +101,9 @@ export function Projects() {
                     whileHover={{ scale: 1.05 }}
                   >
                     <Image
-                      src={Barber || "/placeholder.svg"}
+                      src={project.image || "/placeholder.svg"}
                       alt={project.title}
-                      width={640}
+                      width={660}
                       height={360} 
                     />
                   </motion.div>

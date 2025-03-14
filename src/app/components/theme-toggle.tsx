@@ -24,7 +24,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="h-8 cursor-pointer bg-gray-200 dark:bg-gray-500 rounded-full flex items-center p-1 relative transition-colors"
+      className="h-8 cursor-pointer bg-gray-200 dark:bg-gray-500 rounded flex items-center p-1 relative transition-colors"
     >
       <motion.div
         className="w-6 h-6 bg-white dark:bg-gray-500 rounded-full flex items-center justify-center shadow-md"
