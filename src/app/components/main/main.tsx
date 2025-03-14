@@ -5,6 +5,7 @@ import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import { Button } from "@/app/components/ui/button";
 import Diego from "../../../../public/gojo.png"
+import Image from "next/image";
 import { Linkedin, DownloadIcon } from "lucide-react";
 
 export default function Main() {
@@ -145,7 +146,7 @@ export default function Main() {
               {/* Gradiente apenas atrás da imagem */}
               <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-red-600 to-blue-600 opacity-75 blur-xl animate-pulse" />
               <div className="relative aspect-square overflow-hidden rounded-full border-4 border-red-600 w-[280px] h-[280px] md:w-[350px] md:h-[350px] bg-gradient-to-br from-gray-100 to-white dark:from-gray-900 dark:to-gray-800">
-                <img
+                <Image
                   src={Diego.src || "/placeholder.svg"}
                   alt="Diego Silva Dias"
                   className="object-cover"

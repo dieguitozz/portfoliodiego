@@ -105,7 +105,7 @@ export function Skills() {
   };
 
   return (
-    <section id="habilidades" className="py-20 relative overflow-hidden">
+    <div id="habilidades" className="py-20 relative overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-muted/50" />
         <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-radial from-red-500/10 to-transparent blur-3xl" />
@@ -141,30 +141,30 @@ export function Skills() {
               initial="hidden"
               animate={inView ? "show" : "hidden"}
             >
-              {technicalSkills.map((skill, index) => (
-                <motion.div
-                  key={skill.name}
-                  variants={item}
-                  whileHover={{ scale: 1.03 }}
-                  className="flex justify-center"
-                >
-                  <Card className="overflow-hidden border-2 hover:border-red-600 transition-all duration-300 h-full bg-background/80 backdrop-blur-sm">
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-4">
-                        <div className="p-3 rounded-xl bg-muted/50">
-                          {skill.icon}
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold mb-2">{skill.name}</h4>
-                          <h5 className="text-sm text-muted-foreground">
-                            {skill.description}
-                          </h5>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
+{technicalSkills.map((skill) => (
+  <motion.div
+    key={skill.name}
+    variants={item}
+    whileHover={{ scale: 1.03 }}
+    className="flex justify-center"
+  >
+    <Card className="overflow-hidden border-2 hover:border-red-600 transition-all duration-300 h-full bg-background/80 backdrop-blur-sm">
+      <CardContent className="p-6">
+        <div className="flex items-start gap-4">
+          <div className="p-3 rounded-xl bg-muted/50">
+            {skill.icon}
+          </div>
+          <div className="flex-1">
+            <h4 className="font-semibold mb-2">{skill.name}</h4>
+            <h5 className="text-sm text-muted-foreground">
+              {skill.description}
+            </h5>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  </motion.div>
+))}
             </motion.div>
           </div>
 
@@ -202,6 +202,6 @@ export function Skills() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

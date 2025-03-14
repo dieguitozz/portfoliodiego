@@ -2,9 +2,8 @@
 
 import { useTheme } from "next-themes"
 import { Moon, Sun } from "lucide-react"
-import { Button } from "../components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../components/ui/dropdown-menu"
 import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
@@ -16,38 +15,28 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <Button variant="ghost" size="icon" disabled>
-        <Sun className="h-5 w-5 text-gray-800 dark:text-gray-200" />
-      </Button>
+      <div className="w-12 h-6 bg-gray-300 dark:bg-gray-700 rounded-full flex items-center px-1">
+        <motion.div className="w-5 h-5 bg-gray-400 dark:bg-gray-600 rounded-full" />
+      </div>
     )
   }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button 
-          className="cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-400 transition-all duration-300 rounded p-2 relative"
-          variant="ghost" 
-          size="icon" 
-          aria-label="Alternar tema"
-        >
-          <Sun 
-            className={`h-5 w-5 transition-all duration-300 ${theme === 'dark' ? 'rotate-0 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'}`} 
-          />
-          <Moon 
-            className={`absolute h-5 w-5 transition-all duration-300 ${theme === 'dark' ? 'rotate-0 scale-100 opacity-100' : 'rotate-90 scale-0 opacity-0'}`} 
-          />
-          <span className="sr-only">Alternar tema</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem className="cursor-pointer" onClick={() => setTheme("light")}>
-          Claro
-        </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer" onClick={() => setTheme("dark")}>
-          Escuro
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <button
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      className="h-8 cursor-pointer bg-gray-200 dark:bg-gray-500 rounded-full flex items-center p-1 relative transition-colors"
+    >
+      <motion.div
+        className="w-6 h-6 bg-white dark:bg-gray-500 rounded-full flex items-center justify-center shadow-md"
+        layout
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      >
+        {theme === "dark" ? (
+          <Moon className="w-4 h-4 text-white" />
+        ) : (
+          <Sun className="w-4 h-4 text-white" />
+        )}
+      </motion.div>
+    </button>
   )
 }

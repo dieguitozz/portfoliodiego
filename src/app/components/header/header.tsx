@@ -131,7 +131,7 @@ export function Header() {
     <motion.div
       className="fixed inset-0 top-16 z-50 bg-background/95 backdrop-blur-md flex justify-center items-center"
       initial={{ opacity: 0, height: 0 }}
-      animate={{ opacity: 1, height: "100vh" }}  // A altura agora é 100vh
+      animate={{ opacity: 1, height: "100vh" }}
       exit={{ opacity: 0, height: 0 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
