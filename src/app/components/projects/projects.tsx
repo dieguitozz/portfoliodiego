@@ -27,7 +27,7 @@ export function Projects() {
       repoUrl: "https://github.com/Kaua12365/ClassicBarber",
     },    
     {
-      title: "Escritóro de Advocacia Viirtual",
+      title: "Escritóro de Advocacia Virtual",
       description: "TCC desenvolvido para um escritório fictício de advocacia, com sistema de agendamento, listagem de advogados e um chat integrado.",
       image: "/dfgr.png",
       tags: ["React", "JavaScript", "SCSS", "MySQL"],
@@ -137,7 +137,7 @@ export function Projects() {
                       </span>
                     </a>
                   </Button>
-                  <Button className="bg-red-600 hover:bg-red-700 group relative overflow-hidden" size="sm" asChild>
+                  <Button className="bg-red-600 hover:bg-red-700 group relative overflow-hidden text-white" size="sm" asChild>
                     <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
                       <span className="relative z-10 flex items-center">
                         <ExternalLink className="mr-2 h-4 w-4" /> Visitar

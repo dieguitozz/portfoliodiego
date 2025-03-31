@@ -49,6 +49,13 @@ export function Header() {
     { href: "#contato", label: "Contato" },
   ]
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <motion.header
       className={`sticky top-0 z-40 w-full backdrop-blur transition-all duration-300 ${scrolled ? "bg-background/80 border-b shadow-sm" : "bg-transparent"}`}
@@ -69,36 +76,10 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              onClick={(e) => {
-                e.stopPropagation()
-                setIsOpen(!isOpen)
-              }}
-              aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
-              className="relative"
+              className="md:hidden"
+              onClick={() => setIsOpen(!isOpen)}
             >
-              <AnimatePresence mode="wait">
-                {isOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <X className="h-5 w-5" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Menu className="h-5 w-5" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <Menu className="h-5 w-5" />
             </Button>
           </div>
         ) : (
@@ -111,13 +92,13 @@ export function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index }}
                 >
-                  <Link
-                    href={item.href}
-                    className="text-sm font-medium transition-colors hover:text-red-600 relative group text-base"
+                  <button
+                    onClick={() => scrollToSection(item.href.replace("#", ""))}
+                    className="text-sm font-bold transition-colors hover:text-red-600 relative group text-base cursor-pointer"
                   >
                     {item.label}
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-600 transition-all duration-300 group-hover:w-full" />
-                  </Link>
+                  </button>
                 </motion.div>
               ))}
             </nav>
@@ -126,56 +107,29 @@ export function Header() {
         )}
       </div>
 
-      <AnimatePresence>
-  {isOpen && isMobile && (
-    <motion.div
-      className="inset-0 top-5 z-30 bg-background/95 backdrop-blur-md flex justify-center items-center"
-      initial={{ opacity: 0, height: 0 }}
-      animate={{ opacity: 1, height: "100vh" }}
-      exit={{ opacity: 0, height: 0 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-    >
-      <nav className="container flex flex-col items-center gap-6 p-6">
-        {navItems.map((item, index) => (
-          <motion.div
-            key={item.href}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1 * index }}
-          >
-            <Link
-              href={item.href}
-              className="text-lg font-medium transition-colors hover:text-red-600 flex items-center"
-              onClick={() => setIsOpen(false)}
-            >
-              <span className="text-red-600 mr-2"></span>
-              {item.label}
-            </Link>
-          </motion.div>
-        ))}
-
+      {isOpen && (
         <motion.div
-          className="mt-auto pt-6 border-t w-full flex flex-col items-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          className="md:hidden"
         >
-          <p className="text-sm text-muted-foreground">Entre em contato</p>
-          <a
-                href="mailto:diegosilvasd2006@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
+          <div className="container mx-auto px-6 py-4 space-y-4">
+            {navItems.map((item) => (
+              <button
+                key={item.href}
+                onClick={() => {
+                  scrollToSection(item.href.replace("#", ""));
+                  setIsOpen(false);
+                }}
+                className="block w-full text-left text-sm font-bold transition-colors hover:text-red-600 cursor-pointer"
               >
-            <Button className="bg-red-600 hover:bg-red-700 mt-2">
-              <Mail className="mr-2 h-4 w-4" /> diegosilvasd2006@gmail.com
-            </Button>
-          </a>
+                {item.label}
+              </button>
+            ))}
+          </div>
         </motion.div>
-      </nav>
-    </motion.div>
-  )}
-</AnimatePresence>
-
+      )}
     </motion.header>
   )
 }
