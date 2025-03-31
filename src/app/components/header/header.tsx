@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Menu, X, Mail } from "lucide-react"
+import { Menu } from "lucide-react"
 import { ThemeToggle } from "../theme-toggle"
 import { Button } from "../ui/button"
 import { useMobile } from "@/app/hooks/use-mobile"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion} from "framer-motion"
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
