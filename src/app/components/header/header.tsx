@@ -6,7 +6,7 @@ import { Menu } from "lucide-react"
 import { ThemeToggle } from "../theme-toggle"
 import { Button } from "../ui/button"
 import { useMobile } from "@/app/hooks/use-mobile"
-import { motion} from "framer-motion"
+import { motion } from "framer-motion"
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
