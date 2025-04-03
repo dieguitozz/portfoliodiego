@@ -16,6 +16,7 @@ import HtmlIcon from "../../../../public/html.svg";
 import CssIcon from "../../../../public/css.svg";
 import MySqlIcon from "../../../../public/mysql.svg";
 import JavascriptIcon from "../../../../public/javascript.svg";
+import TypescriptIcon from "../../../../public/typescript.svg";
 
 export function Skills() {
   const [ref, inView] = useInView({
@@ -29,6 +30,12 @@ export function Skills() {
       icon: <Image src={JavascriptIcon} alt="React" className="h-8 w-8" />,
       description:
         "Linguagem de programação para web, usada no frontend e backend.",
+    },
+    {
+      name: "TypeScript",
+      icon: <Image src={TypescriptIcon} alt="React" className="h-8 w-8" />,
+      description:
+        "Linguagem de programação tipada para web, usada no frontend",
     },
     {
       name: "React",

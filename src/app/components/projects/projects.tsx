@@ -17,7 +17,15 @@ export function Projects() {
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const projects = [
+  const projects = [    
+    {
+      title: "Pokédex",
+      description: "Uma enciclopédia virtual de todos os pokémon",
+      image: "/pokedex.jpeg",
+      tags: ["Next", "TypeScript", "Tailwind"],
+      demoUrl: "https://dikedex.vercel.app",
+      repoUrl: "https://github.com/dieguitozz/DikeDex",
+    },  
     {
       title: "Barbearia Virtual",
       description: "WebSite com catálogo de cortes e sistema de agendamento.",
@@ -27,7 +35,7 @@ export function Projects() {
       repoUrl: "https://github.com/Kaua12365/ClassicBarber",
     },    
     {
-      title: "Escritóro de Advocacia Virtual",
+      title: "Escritório de Advocacia Virtual",
       description: "TCC desenvolvido para um escritório fictício de advocacia, com sistema de agendamento, listagem de advogados e um chat integrado.",
       image: "/dfgr.png",
       tags: ["React", "JavaScript", "SCSS", "MySQL"],
@@ -104,7 +112,7 @@ export function Projects() {
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       width={660}
-                      height={360} 
+                      height={400} 
                     />
                   </motion.div>
                   <div
