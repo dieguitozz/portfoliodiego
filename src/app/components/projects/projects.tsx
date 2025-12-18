@@ -2,7 +2,14 @@
 
 import { ExternalLink, Github, ArrowRight } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/app/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/app/components/ui/card";
 import { Badge } from "@/app/components/ui/badge";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -17,7 +24,7 @@ export function Projects() {
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const projects = [    
+  const projects = [
     {
       title: "Pokédex",
       description: "Uma enciclopédia virtual de todos os pokémon",
@@ -25,7 +32,7 @@ export function Projects() {
       tags: ["Next", "TypeScript", "Tailwind"],
       demoUrl: "https://dikedex.vercel.app",
       repoUrl: "https://github.com/dieguitozz/DikeDex",
-    },  
+    },
     {
       title: "Barbearia Virtual",
       description: "WebSite com catálogo de cortes e sistema de agendamento.",
@@ -33,15 +40,16 @@ export function Projects() {
       tags: ["React", "JavaScript", "SCSS"],
       demoUrl: "#",
       repoUrl: "https://github.com/Kaua12365/ClassicBarber",
-    },    
+    },
     {
       title: "Escritório de Advocacia Virtual",
-      description: "TCC desenvolvido para um escritório fictício de advocacia, com sistema de agendamento, listagem de advogados e um chat integrado.",
+      description:
+        "TCC desenvolvido para um escritório fictício de advocacia, com sistema de agendamento, listagem de advogados e um chat integrado.",
       image: "/dfgr.png",
       tags: ["React", "JavaScript", "SCSS", "MySQL"],
       demoUrl: "#",
       repoUrl: "https://github.com/RafaelFSaldanha/tcc-dfgr-advocacy",
-    }
+    },
   ];
 
   const container = {
@@ -76,9 +84,12 @@ export function Projects() {
           transition={{ duration: 0.5 }}
         >
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Meus Projetos</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              Meus Projetos
+            </h2>
             <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Conheça alguns dos projetos que desenvolvi aplicando minhas habilidades
+              Conheça alguns dos projetos que desenvolvi aplicando minhas
+              habilidades
             </p>
           </div>
         </motion.div>
@@ -97,14 +108,15 @@ export function Projects() {
               onMouseLeave={() => setHoveredIndex(null)}
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 300 }}
-               className="w-full sm:w-96 md:w-[500px] lg:w-[650px]"
+              className="w-full sm:w-96 md:w-[500px] lg:w-[650px]"
             >
               <Card className="overflow-hidden border-2 hover:border-red-600 cursor-pointer transition-all duration-300 h-full bg-background/80 backdrop-blur-sm">
                 <div className="aspect-video overflow-hidden relative">
                   <motion.div
                     className="object-cover w-full h-full transition-transform duration-700"
                     style={{
-                      transform: hoveredIndex === index ? "scale(1.1)" : "scale(1)",
+                      transform:
+                        hoveredIndex === index ? "scale(1.1)" : "scale(1)",
                     }}
                     whileHover={{ scale: 1.05 }}
                   >
@@ -112,7 +124,7 @@ export function Projects() {
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       width={660}
-                      height={400} 
+                      height={400}
                     />
                   </motion.div>
                   <div
@@ -129,7 +141,11 @@ export function Projects() {
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
-                      <Badge key={tag} variant="outline" className="bg-muted/50 rounded">
+                      <Badge
+                        key={tag}
+                        variant="outline"
+                        className="bg-muted/50 rounded"
+                      >
                         {tag}
                       </Badge>
                     ))}
@@ -137,7 +153,11 @@ export function Projects() {
                 </CardContent>
                 <CardFooter className="flex justify-between">
                   <Button variant="outline" size="sm" asChild className="group">
-                    <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={project.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Github className="mr-2 h-4 w-4" />
                       <span>Código</span>
                       <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
@@ -145,13 +165,33 @@ export function Projects() {
                       </span>
                     </a>
                   </Button>
-                  <Button className="bg-red-600 hover:bg-red-700 group relative overflow-hidden text-white" size="sm" asChild>
-                    <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    className={`group relative overflow-hidden text-white ${
+                      project.demoUrl === "#"
+                        ? "bg-gray-400 cursor-not-allowed opacity-70"
+                        : "bg-red-600 hover:bg-red-700"
+                    }`}
+                    size="sm"
+                    disabled={project.demoUrl === "#"}
+                    asChild={project.demoUrl !== "#"}
+                  >
+                    {project.demoUrl === "#" ? (
                       <span className="relative z-10 flex items-center">
-                        <ExternalLink className="mr-2 h-4 w-4" /> Visitar
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        Indisponível
                       </span>
-                      <span className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                    </a>
+                    ) : (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span className="relative z-10 flex items-center">
+                          <ExternalLink className="mr-2 h-4 w-4" /> Visitar
+                        </span>
+                        <span className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                      </a>
+                    )}
                   </Button>
                 </CardFooter>
               </Card>

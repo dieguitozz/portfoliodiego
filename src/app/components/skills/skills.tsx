@@ -17,6 +17,8 @@ import CssIcon from "../../../../public/css.svg";
 import MySqlIcon from "../../../../public/mysql.svg";
 import JavascriptIcon from "../../../../public/javascript.svg";
 import TypescriptIcon from "../../../../public/typescript.svg";
+import JavaIcon from "../../../../public/java.svg";
+import NodeIcon from "../../../../public/node.svg";
 
 export function Skills() {
   const [ref, inView] = useInView({
@@ -25,6 +27,12 @@ export function Skills() {
   });
 
   const technicalSkills = [
+    {
+      name: "Java",
+      icon: <Image src={JavaIcon} alt="React" className="h-8 w-8" />,
+      description:
+        "Linguagem de programação orientada a objetos usada no desenvolvimento de sistemas robustos.",
+    },
     {
       name: "JavaScript",
       icon: <Image src={JavascriptIcon} alt="React" className="h-8 w-8" />,
@@ -36,6 +44,12 @@ export function Skills() {
       icon: <Image src={TypescriptIcon} alt="React" className="h-8 w-8" />,
       description:
         "Linguagem de programação tipada para web, usada no frontend",
+    },
+    {
+      name: "Node.js",
+      icon: <Image src={NodeIcon} alt="React" className="h-8 w-8" />,
+      description:
+        "Ambiente de execução JavaScript no servidor para construir aplicações escaláveis.",
     },
     {
       name: "React",

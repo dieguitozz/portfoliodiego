@@ -87,7 +87,7 @@ export default function Main() {
               </a>
               <Button
                 variant="outline"
-                className="group relative overflow-hidden w-full sm:w-auto h-12 sm:h-auto text-base"
+                className="group relative overflow-hidden w-full sm:w-auto h-12 sm:h-auto text-base cursor-pointer"
               >
                 <a
                   href="#projetos"
