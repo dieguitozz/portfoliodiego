@@ -73,7 +73,7 @@ export default function Main() {
               variants={item}
             >
               <a
-                href="/diegosilvadias.pdf"
+                href="/DiegoDiasCurriculo.pdf"
                 download
                 className="w-full sm:w-auto"
               >

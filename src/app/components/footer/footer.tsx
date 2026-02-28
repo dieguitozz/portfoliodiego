@@ -156,9 +156,6 @@ export function Footer() {
           <p className="text-center text-sm text-muted-foreground">
             &copy; {currentYear} Designed and Developed by Diego Silva Dias
           </p>
-          <p className="text-center text-sm text-muted-foreground">
-            Developed with <span className="text-red-600">❤</span> and Next.js
-          </p>
         </div>
       </div>
     </footer>
